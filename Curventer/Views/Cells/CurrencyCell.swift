@@ -14,6 +14,9 @@ class CurrencyCell: UITableViewCell{
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     
+    // MARK: - viewDidLoad
+    
+    
     // MARK: - Actions
     @IBAction func addToFavourite(){
         

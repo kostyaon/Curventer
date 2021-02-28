@@ -15,13 +15,11 @@ class RatesVC: UITableViewController {
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        RateAPIManager.shared.fetchRateFor(base: "USD", exchangeFor: "EUR"){rates in
-            print(rates.rates["CAD"] ?? "NO CAD")
-        }
-        
+ 
         RateAPIManager.shared.fetchAllRates(base: "USD"){rates in
-            print(rates.rates["RUR"] ?? "NO RUR")
+            print("RATES: \(rates)")
             self.allRates = rates
+            self.tableView.reloadData()
         }
     }
     
@@ -34,5 +32,9 @@ extension RatesVC{
         return allRates?.rates.count ?? 1
     }
     
-
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath)
+      
+        return cell
+    }
 }
