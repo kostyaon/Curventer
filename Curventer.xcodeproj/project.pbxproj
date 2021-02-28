@@ -3,30 +3,36 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A80331BD8F771289D52277E4 /* Pods_Curventer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2782CB5822749667B07FC40 /* Pods_Curventer.framework */; };
+		B51BD36B25EBE25A00DDCC8C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */; };
 		B5790A2F25E78F2B006C0962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A2E25E78F2B006C0962 /* AppDelegate.swift */; };
 		B5790A3125E78F2C006C0962 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A3025E78F2C006C0962 /* SceneDelegate.swift */; };
-		B5790A3325E78F2C006C0962 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A3225E78F2C006C0962 /* ViewController.swift */; };
+		B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A3225E78F2C006C0962 /* RatesVC.swift */; };
 		B5790A3625E78F2C006C0962 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5790A3425E78F2C006C0962 /* Main.storyboard */; };
 		B5790A3825E78F33006C0962 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5790A3725E78F33006C0962 /* Assets.xcassets */; };
 		B5790A3B25E78F33006C0962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5790A3925E78F33006C0962 /* LaunchScreen.storyboard */; };
+		B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4225EBB934006C0962 /* RateAPIManager.swift */; };
+		B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4425EBBE8F006C0962 /* Rate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A26FFDB735D244155CD3028 /* Pods-Curventer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curventer.release.xcconfig"; path = "Target Support Files/Pods-Curventer/Pods-Curventer.release.xcconfig"; sourceTree = "<group>"; };
 		8050DA07EF1E19547211472A /* Pods-Curventer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curventer.debug.xcconfig"; path = "Target Support Files/Pods-Curventer/Pods-Curventer.debug.xcconfig"; sourceTree = "<group>"; };
+		B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		B5790A2B25E78F2B006C0962 /* Curventer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Curventer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5790A2E25E78F2B006C0962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5790A3025E78F2C006C0962 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5790A3225E78F2C006C0962 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5790A3225E78F2C006C0962 /* RatesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesVC.swift; sourceTree = "<group>"; };
 		B5790A3525E78F2C006C0962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5790A3725E78F33006C0962 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5790A3A25E78F33006C0962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5790A3C25E78F34006C0962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5790A4225EBB934006C0962 /* RateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAPIManager.swift; sourceTree = "<group>"; };
+		B5790A4425EBBE8F006C0962 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		E2782CB5822749667B07FC40 /* Pods_Curventer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Curventer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -48,7 +54,6 @@
 				8050DA07EF1E19547211472A /* Pods-Curventer.debug.xcconfig */,
 				1A26FFDB735D244155CD3028 /* Pods-Curventer.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -58,6 +63,56 @@
 				E2782CB5822749667B07FC40 /* Pods_Curventer.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B51BD36C25EBE3DA00DDCC8C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B5790A4425EBBE8F006C0962 /* Rate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B51BD36D25EBE4AE00DDCC8C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5790A3225E78F2C006C0962 /* RatesVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B51BD36E25EBE4B500DDCC8C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B51BD36F25EBE4BC00DDCC8C /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B51BD36F25EBE4BC00DDCC8C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B51BD37025EBE4F700DDCC8C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5790A3425E78F2C006C0962 /* Main.storyboard */,
+				B5790A3725E78F33006C0962 /* Assets.xcassets */,
+				B5790A3925E78F33006C0962 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B51BD37125EBE54700DDCC8C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B5790A4225EBB934006C0962 /* RateAPIManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		B5790A2225E78F2B006C0962 = {
@@ -81,12 +136,13 @@
 		B5790A2D25E78F2B006C0962 /* Curventer */ = {
 			isa = PBXGroup;
 			children = (
+				B51BD37125EBE54700DDCC8C /* Networking */,
+				B51BD37025EBE4F700DDCC8C /* Resources */,
+				B51BD36E25EBE4B500DDCC8C /* Views */,
+				B51BD36D25EBE4AE00DDCC8C /* Controllers */,
+				B51BD36C25EBE3DA00DDCC8C /* Models */,
 				B5790A2E25E78F2B006C0962 /* AppDelegate.swift */,
 				B5790A3025E78F2C006C0962 /* SceneDelegate.swift */,
-				B5790A3225E78F2C006C0962 /* ViewController.swift */,
-				B5790A3425E78F2C006C0962 /* Main.storyboard */,
-				B5790A3725E78F33006C0962 /* Assets.xcassets */,
-				B5790A3925E78F33006C0962 /* LaunchScreen.storyboard */,
 				B5790A3C25E78F34006C0962 /* Info.plist */,
 			);
 			path = Curventer;
@@ -207,8 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5790A3325E78F2C006C0962 /* ViewController.swift in Sources */,
+				B51BD36B25EBE25A00DDCC8C /* CurrencyCell.swift in Sources */,
+				B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */,
+				B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */,
 				B5790A2F25E78F2B006C0962 /* AppDelegate.swift in Sources */,
+				B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */,
 				B5790A3125E78F2C006C0962 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
