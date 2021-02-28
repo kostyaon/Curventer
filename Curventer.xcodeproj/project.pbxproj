@@ -17,6 +17,7 @@
 		B5790A3B25E78F33006C0962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5790A3925E78F33006C0962 /* LaunchScreen.storyboard */; };
 		B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4225EBB934006C0962 /* RateAPIManager.swift */; };
 		B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4425EBBE8F006C0962 /* Rate.swift */; };
+		B5FAD35825EBF60800B1BA47 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAD35725EBF60800B1BA47 /* Currency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		B5790A3C25E78F34006C0962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5790A4225EBB934006C0962 /* RateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAPIManager.swift; sourceTree = "<group>"; };
 		B5790A4425EBBE8F006C0962 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		B5FAD35725EBF60800B1BA47 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		E2782CB5822749667B07FC40 /* Pods_Curventer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Curventer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				B5790A4425EBBE8F006C0962 /* Rate.swift */,
+				B5FAD35725EBF60800B1BA47 /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */,
 				B5790A2F25E78F2B006C0962 /* AppDelegate.swift in Sources */,
 				B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */,
+				B5FAD35825EBF60800B1BA47 /* Currency.swift in Sources */,
 				B5790A3125E78F2C006C0962 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

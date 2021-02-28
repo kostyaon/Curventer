@@ -9,7 +9,7 @@ import UIKit
 
 class RatesVC: UITableViewController {
     // MARK: - Properties
-    var allRates: Rate?
+    var allRates: [Currency] = []
     
     
     // MARK: - viewDidLoad
@@ -17,24 +17,34 @@ class RatesVC: UITableViewController {
         super.viewDidLoad()
  
         RateAPIManager.shared.fetchAllRates(base: "USD"){rates in
-            print("RATES: \(rates)")
-            self.allRates = rates
+            self.allRates = self.convertToCurrency(from: rates.rates)
             self.tableView.reloadData()
         }
     }
     
     // MARK: - Helper methods
+    private func convertToCurrency(from rates: [String: Double]) -> [Currency]{
+        var items: [Currency] = []
+        for (key, value) in rates{
+            items.append(Currency(name: key, value: value))
+        }
+        return items
+    }
+    
 }
 
 // MARK: - TableViewDelegates
 extension RatesVC{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allRates?.rates.count ?? 1
+        return allRates.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath)
-      
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath) as! CurrencyCell
+        
+        let currency = allRates[indexPath.row]
+        cell.currencyLabel.text = currency.name
+        cell.rateLabel.text = "\(currency.value)"
         return cell
     }
 }
