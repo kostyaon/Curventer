@@ -8,28 +8,20 @@
 
 import Foundation
 import Alamofire
-        
-typealias RequestComplete = (Rate)->Void
 
 struct RateAPIManager{
-    static let shared = RateAPIManager()
-
-    /*func fetchRateFor(base: String, exchangeFor symbols: String, completion: @escaping RequestComplete){
-        let parameters = ["base": base, "symbols": symbols]
-        AF.request(Constants.baseURL, parameters: parameters)
-            .responseDecodable(of: Rate.self){ response in
-                guard let rates = response.value else {return}
-                print(rates.rates)
-                completion(rates)
-        }
-    }*/
-    
-    func fetchRates(type: EndpointType, completion: @escaping RequestComplete){
-        AF.request(type.fullURL, method: type.httpMethod, parameters: type.parameters)
-            .responseDecodable(of: Rate.self){response in
-                guard let rates = response.value else{return}
-                print("ALL RATES: \(rates.rates)")
-                completion(rates)
+    static func fetch<T: Decodable>(type: T.Type, router: EndpointType, completion: @escaping (Result<T, Error>) -> Void) {
+        AF.request(router.fullURL, method: router.httpMethod, parameters: router.parameters)
+            .responseDecodable(of: type) { response in
+                if let error = response.error {
+                    completion(.failure(error))
+                    return
+                }
+                guard let rates = response.value else {
+                    completion(.failure(NetworkError.fetchError))
+                    return
+                }
+                completion(.success(rates))
         }
     }
 }

@@ -14,13 +14,10 @@ enum RateRouter{
     case fetchRatesOnDateOnBase(String, String)
 }
 
-enum baseSymbol{
-    
-}
 
 // MARK: - Extensions
-extension RateRouter: EndpointType{
-    var baseURL: String{
+extension RateRouter: EndpointType {
+    var baseURL: String {
         switch self {
            default:
             return "https://api.ratesapi.io/api"

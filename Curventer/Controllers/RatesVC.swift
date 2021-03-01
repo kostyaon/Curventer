@@ -8,25 +8,28 @@
 import UIKit
 
 class RatesVC: UITableViewController {
-    // Add constant struct
     // MARK: - Properties
     var allRates: [Currency] = []
-    
     
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        RateAPIManager.shared.fetchRates(type: RateRouter.fetchRatesOnDateOnBase("2020-08-08", "PLN")){rates in
-            self.allRates = self.convertToCurrency(from: rates.rates)
-            self.tableView.reloadData()
+        RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchLatestRatesOnBase("USD")) { result in
+            switch result {
+            case .success(let rate):
+                self.allRates = self.convertToCurrency(from: rate.rates)
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("ERROR HANDLER: \(error.localizedDescription)")
+            }
         }
     }
     
     
     // MARK: - Helper methods
-    private func convertToCurrency(from rates: [String: Double]) -> [Currency]{
+    private func convertToCurrency(from rates: [String: Double]) -> [Currency] {
         var items: [Currency] = []
         for (key, value) in rates{
             items.append(Currency(name: key, value: value))
@@ -34,7 +37,7 @@ class RatesVC: UITableViewController {
         return items
     }
     
-    private func removeCurrency(at index: Int){
+    private func removeCurrency(at index: Int) {
         allRates.remove(at: index)
     }
     
@@ -42,7 +45,7 @@ class RatesVC: UITableViewController {
 
 
 // MARK: - TableViewDelegates
-extension RatesVC{
+extension RatesVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allRates.count
     }

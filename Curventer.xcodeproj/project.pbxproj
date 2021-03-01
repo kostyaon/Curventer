@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A80331BD8F771289D52277E4 /* Pods_Curventer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2782CB5822749667B07FC40 /* Pods_Curventer.framework */; };
 		B51BD36B25EBE25A00DDCC8C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */; };
+		B56B45A925ED1AA400CD3BAA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B45A825ED1AA400CD3BAA /* NetworkError.swift */; };
 		B5790A2F25E78F2B006C0962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A2E25E78F2B006C0962 /* AppDelegate.swift */; };
 		B5790A3125E78F2C006C0962 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A3025E78F2C006C0962 /* SceneDelegate.swift */; };
 		B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A3225E78F2C006C0962 /* RatesVC.swift */; };
@@ -26,6 +27,7 @@
 		1A26FFDB735D244155CD3028 /* Pods-Curventer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curventer.release.xcconfig"; path = "Target Support Files/Pods-Curventer/Pods-Curventer.release.xcconfig"; sourceTree = "<group>"; };
 		8050DA07EF1E19547211472A /* Pods-Curventer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Curventer.debug.xcconfig"; path = "Target Support Files/Pods-Curventer/Pods-Curventer.debug.xcconfig"; sourceTree = "<group>"; };
 		B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		B56B45A825ED1AA400CD3BAA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B5790A2B25E78F2B006C0962 /* Curventer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Curventer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5790A2E25E78F2B006C0962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5790A3025E78F2C006C0962 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				B5790A4225EBB934006C0962 /* RateAPIManager.swift */,
 				B5FAD35925EC9B5B00B1BA47 /* EndpointType.swift */,
 				B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */,
+				B56B45A825ED1AA400CD3BAA /* NetworkError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */,
 				B5FAD35825EBF60800B1BA47 /* Currency.swift in Sources */,
 				B5790A3125E78F2C006C0962 /* SceneDelegate.swift in Sources */,
+				B56B45A925ED1AA400CD3BAA /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

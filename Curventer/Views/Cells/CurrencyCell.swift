@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class CurrencyCell: UITableViewCell{
+class CurrencyCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     
     
     // MARK: - Actions
-    @IBAction func addToFavourite(){
+    @IBAction func addToFavourite() {
         
     }
     
