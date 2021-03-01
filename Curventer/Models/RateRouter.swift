@@ -1,27 +1,15 @@
-//
-//  RateRouter.swift
-//  Curventer
-//
-//  Created by Konstantin on 3/1/21.
-//  Copyright © 2021 Konstantin. All rights reserved.
-//
-
 import Foundation
 import Alamofire
 
-enum RateRouter{
+enum RateRouter {
     case fetchLatestRatesOnBase(String)
     case fetchRatesOnDateOnBase(String, String)
 }
 
-
 // MARK: - Extensions
 extension RateRouter: EndpointType {
     var baseURL: String {
-        switch self {
-           default:
-            return "https://api.ratesapi.io/api"
-        }
+        "https://api.ratesapi.io/api"
     }
     
     var headers: HTTPHeader? {
@@ -59,6 +47,5 @@ extension RateRouter: EndpointType {
             return URL(string: self.baseURL + self.path)!
         }
     }
-    
 }
 

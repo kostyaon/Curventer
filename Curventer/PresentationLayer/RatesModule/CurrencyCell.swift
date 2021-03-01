@@ -1,11 +1,3 @@
-//
-//  CurrencyCell.swift
-//  Curventer
-//
-//  Created by Konstantin on 2/28/21.
-//  Copyright © 2021 Konstantin. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -20,6 +12,11 @@ class CurrencyCell: UITableViewCell {
         
     }
     
+    
     // MARK: - Helper methods
+    func update(for currency: Currency) {
+        currencyLabel.text = currency.name
+        rateLabel.text = "\(currency.value)"
+    }
 }
 

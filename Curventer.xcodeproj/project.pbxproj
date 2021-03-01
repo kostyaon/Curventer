@@ -78,32 +78,9 @@
 			children = (
 				B5790A4425EBBE8F006C0962 /* Rate.swift */,
 				B5FAD35725EBF60800B1BA47 /* Currency.swift */,
+				B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		B51BD36D25EBE4AE00DDCC8C /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				B5790A3225E78F2C006C0962 /* RatesVC.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		B51BD36E25EBE4B500DDCC8C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				B51BD36F25EBE4BC00DDCC8C /* Cells */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		B51BD36F25EBE4BC00DDCC8C /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		B51BD37025EBE4F700DDCC8C /* Resources */ = {
@@ -121,10 +98,34 @@
 			children = (
 				B5790A4225EBB934006C0962 /* RateAPIManager.swift */,
 				B5FAD35925EC9B5B00B1BA47 /* EndpointType.swift */,
-				B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */,
 				B56B45A825ED1AA400CD3BAA /* NetworkError.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		B56B45AA25ED624100CD3BAA /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B56B45AB25ED626500CD3BAA /* RatesModule */,
+			);
+			path = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		B56B45AB25ED626500CD3BAA /* RatesModule */ = {
+			isa = PBXGroup;
+			children = (
+				B5790A3225E78F2C006C0962 /* RatesVC.swift */,
+				B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */,
+			);
+			path = RatesModule;
+			sourceTree = "<group>";
+		};
+		B56B45AC25ED63FC00CD3BAA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B51BD37125EBE54700DDCC8C /* Networking */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B5790A2225E78F2B006C0962 = {
@@ -148,11 +149,10 @@
 		B5790A2D25E78F2B006C0962 /* Curventer */ = {
 			isa = PBXGroup;
 			children = (
-				B51BD37125EBE54700DDCC8C /* Networking */,
-				B51BD37025EBE4F700DDCC8C /* Resources */,
-				B51BD36E25EBE4B500DDCC8C /* Views */,
-				B51BD36D25EBE4AE00DDCC8C /* Controllers */,
+				B56B45AA25ED624100CD3BAA /* PresentationLayer */,
+				B56B45AC25ED63FC00CD3BAA /* Services */,
 				B51BD36C25EBE3DA00DDCC8C /* Models */,
+				B51BD37025EBE4F700DDCC8C /* Resources */,
 				B5790A2E25E78F2B006C0962 /* AppDelegate.swift */,
 				B5790A3025E78F2C006C0962 /* SceneDelegate.swift */,
 				B5790A3C25E78F34006C0962 /* Info.plist */,

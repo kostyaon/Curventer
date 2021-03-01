@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Curventer
-//
-//  Created by Konstantin on 2/25/21.
-//  Copyright © 2021 Konstantin. All rights reserved.
-//
 import UIKit
 
 class RatesVC: UITableViewController {
@@ -15,32 +8,34 @@ class RatesVC: UITableViewController {
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchLatestRatesOnBase("USD")) { result in
-            switch result {
-            case .success(let rate):
-                self.allRates = self.convertToCurrency(from: rate.rates)
-                self.tableView.reloadData()
-            case .failure(let error):
-                print("ERROR HANDLER: \(error.localizedDescription)")
-            }
-        }
+        
+        fetchRates(for: "USD")
     }
     
     
     // MARK: - Helper methods
-    private func convertToCurrency(from rates: [String: Double]) -> [Currency] {
-        var items: [Currency] = []
-        for (key, value) in rates{
-            items.append(Currency(name: key, value: value))
+    private func prepareForDisplay(from rates: [String: Double]) -> [Currency] {
+        return rates.map { (key, value) in
+            Currency(name: key, value: value)
+            
         }
-        return items
     }
     
     private func removeCurrency(at index: Int) {
         allRates.remove(at: index)
     }
     
+    private func fetchRates(for base: String) {
+        RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchLatestRatesOnBase(base)) { result in
+            switch result {
+            case .success(let rate):
+                self.allRates = self.prepareForDisplay(from: rate.rates)
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("ERROR HANDLER: \(error.localizedDescription)")
+            }
+        }
+    }
 }
 
 
@@ -54,8 +49,7 @@ extension RatesVC {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath) as! CurrencyCell
         
         let currency = allRates[indexPath.row]
-        cell.currencyLabel.text = currency.name
-        cell.rateLabel.text = "\(currency.value)"
+        cell.update(for: currency)
         
         return cell
     }
@@ -65,7 +59,7 @@ extension RatesVC {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+        if editingStyle == .delete {
             removeCurrency(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
