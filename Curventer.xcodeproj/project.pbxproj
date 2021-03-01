@@ -18,6 +18,8 @@
 		B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4225EBB934006C0962 /* RateAPIManager.swift */; };
 		B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4425EBBE8F006C0962 /* Rate.swift */; };
 		B5FAD35825EBF60800B1BA47 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAD35725EBF60800B1BA47 /* Currency.swift */; };
+		B5FAD35A25EC9B5B00B1BA47 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAD35925EC9B5B00B1BA47 /* EndpointType.swift */; };
+		B5FAD35C25EC9C8000B1BA47 /* RateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		B5790A4225EBB934006C0962 /* RateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAPIManager.swift; sourceTree = "<group>"; };
 		B5790A4425EBBE8F006C0962 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		B5FAD35725EBF60800B1BA47 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		B5FAD35925EC9B5B00B1BA47 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRouter.swift; sourceTree = "<group>"; };
 		E2782CB5822749667B07FC40 /* Pods_Curventer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Curventer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				B5790A4225EBB934006C0962 /* RateAPIManager.swift */,
+				B5FAD35925EC9B5B00B1BA47 /* EndpointType.swift */,
+				B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -266,7 +272,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5FAD35A25EC9B5B00B1BA47 /* EndpointType.swift in Sources */,
 				B51BD36B25EBE25A00DDCC8C /* CurrencyCell.swift in Sources */,
+				B5FAD35C25EC9C8000B1BA47 /* RateRouter.swift in Sources */,
 				B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */,
 				B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */,
 				B5790A2F25E78F2B006C0962 /* AppDelegate.swift in Sources */,

@@ -8,15 +8,17 @@
 import UIKit
 
 class RatesVC: UITableViewController {
+    // Add constant struct
     // MARK: - Properties
     var allRates: [Currency] = []
+    
     
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        RateAPIManager.shared.fetchAllRates(base: "USD"){rates in
+        RateAPIManager.shared.fetchRates(type: RateRouter.fetchRatesOnDateOnBase("2020-08-08", "PLN")){rates in
             self.allRates = self.convertToCurrency(from: rates.rates)
             self.tableView.reloadData()
         }
