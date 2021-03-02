@@ -32,7 +32,7 @@ class CurrencyCell: UITableViewCell {
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(starImage, for: .normal)
-        button.tintColor = .orange
+        button.tintColor = .systemOrange
         
         return button
     }()
