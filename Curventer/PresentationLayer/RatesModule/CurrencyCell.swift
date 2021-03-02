@@ -16,7 +16,7 @@ class CurrencyCell: UITableViewCell {
     
     let rateLabel: UILabel = {
         let label = UILabel()
-        let rateColor = UIColor(red: 0, green: 0, blue: 0, alpha: 60)
+        let rateColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 18)
@@ -24,6 +24,17 @@ class CurrencyCell: UITableViewCell {
         label.textAlignment = .left
         
         return label
+    }()
+    
+    let favButton: UIButton = {
+        let button = UIButton(type: .system)
+        let starImage = UIImage(systemName: "star")
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(starImage, for: .normal)
+        button.tintColor = .orange
+        
+        return button
     }()
     
     
@@ -44,6 +55,7 @@ class CurrencyCell: UITableViewCell {
     private func setupViews() {
         addSubview(currencyLabel)
         addSubview(rateLabel)
+        addSubview(favButton)
     }
     
     private func setupConstraints() {
@@ -61,6 +73,13 @@ class CurrencyCell: UITableViewCell {
             rateLabel.topAnchor.constraint(equalTo: currencyLabel.bottomAnchor, constant: 2),
             rateLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             rateLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 8)
+        ])
+        
+        // favButton constraints
+        NSLayoutConstraint.activate([
+            favButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -6),
+            favButton.topAnchor.constraint(equalTo: margins.topAnchor, constant: 12),
+            favButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -12.5)
         ])
     }
     

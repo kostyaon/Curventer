@@ -9,6 +9,7 @@ class RatesVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableViewConfig()
         fetchRates(for: "USD")
     }
     
@@ -17,12 +18,16 @@ class RatesVC: UITableViewController {
     private func prepareForDisplay(from rates: [String: Double]) -> [Currency] {
         return rates.map { (key, value) in
             Currency(name: key, value: value)
-            
         }
     }
     
     private func removeCurrency(at index: Int) {
         allRates.remove(at: index)
+    }
+    
+    private func tableViewConfig() {
+        tableView.rowHeight = 75
+        tableView.register(CurrencyCell.self, forCellReuseIdentifier: "currencyCell")
     }
     
     private func fetchRates(for base: String) {
@@ -46,7 +51,7 @@ extension RatesVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell", for: indexPath) as! CurrencyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath) as! CurrencyCell
         
         let currency = allRates[indexPath.row]
         cell.update(for: currency)
