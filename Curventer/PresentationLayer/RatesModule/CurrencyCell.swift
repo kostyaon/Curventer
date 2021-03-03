@@ -1,9 +1,10 @@
 import Foundation
 import UIKit
+import SnapKit
 
 class CurrencyCell: UITableViewCell {
     // MARK: - Views
-    let currencyLabel: UILabel = {
+    lazy var currencyLabel: UILabel = {
         let label = UILabel()
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -14,7 +15,7 @@ class CurrencyCell: UITableViewCell {
         return label
     }()
     
-    let rateLabel: UILabel = {
+    lazy var rateLabel: UILabel = {
         let label = UILabel()
         let rateColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         
@@ -26,7 +27,7 @@ class CurrencyCell: UITableViewCell {
         return label
     }()
     
-    let favButton: UIButton = {
+    lazy var favButton: UIButton = {
         let button = UIButton(type: .system)
         let starImage = UIImage(systemName: "star")
         
@@ -43,7 +44,6 @@ class CurrencyCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupViews()
-        setupConstraints()
     }
   
     required init?(coder: NSCoder) {
@@ -53,34 +53,30 @@ class CurrencyCell: UITableViewCell {
     
     // MARK: - Private methods
     private func setupViews() {
+         let margins = self.layoutMarginsGuide
+        
+        // currencyLabel setup
         addSubview(currencyLabel)
+        currencyLabel.snp.makeConstraints { make in
+            make.top.leading.equalTo(margins)
+            make.width.equalTo(138)
+        }
+        
+        // rateLabel setup
         addSubview(rateLabel)
+        rateLabel.snp.makeConstraints { make in
+            make.top.equalTo(currencyLabel.snp.bottom).offset(2)
+            make.leading.equalTo(margins.snp.leading)
+            make.trailing.equalTo(margins.snp.trailing).offset(8)
+        }
+        
+        // favButton setup
         addSubview(favButton)
-    }
-    
-    private func setupConstraints() {
-        let margins = self.layoutMarginsGuide
-        
-        // currencyLabel constraints
-        NSLayoutConstraint.activate([
-            currencyLabel.topAnchor.constraint(equalTo: margins.topAnchor),
-            currencyLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            currencyLabel.widthAnchor.constraint(equalToConstant: 138)
-        ])
-        
-        // rateLabel constraints
-        NSLayoutConstraint.activate([
-            rateLabel.topAnchor.constraint(equalTo: currencyLabel.bottomAnchor, constant: 2),
-            rateLabel.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            rateLabel.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 8)
-        ])
-        
-        // favButton constraints
-        NSLayoutConstraint.activate([
-            favButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: -6),
-            favButton.topAnchor.constraint(equalTo: margins.topAnchor, constant: 12),
-            favButton.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -12.5)
-        ])
+        favButton.snp.makeConstraints { make in
+            make.trailing.equalTo(margins.snp.trailing).offset(-6)
+            make.top.equalTo(margins.snp.top).offset(12)
+            make.bottom.equalTo(margins.snp.bottom).offset(-12.5)
+        }
     }
     
     
