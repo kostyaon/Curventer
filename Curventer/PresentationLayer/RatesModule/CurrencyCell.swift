@@ -81,7 +81,7 @@ class CurrencyCell: UITableViewCell {
     
     
     // MARK: - Helper methods
-    func update(for currency: Currency) {
+    func update(with currency: Currency) {
         currencyLabel.text = currency.name
         rateLabel.text = "\(currency.value)"
     }
