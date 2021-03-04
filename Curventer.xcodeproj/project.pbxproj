@@ -11,7 +11,6 @@
 		B51BD36B25EBE25A00DDCC8C /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */; };
 		B56B45A925ED1AA400CD3BAA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B45A825ED1AA400CD3BAA /* NetworkError.swift */; };
 		B56B45B025F0963F00CD3BAA /* RatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B45AF25F0963F00CD3BAA /* RatesView.swift */; };
-		B56B45B225F09BE900CD3BAA /* RatesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B45B125F09BE900CD3BAA /* RatesDataSource.swift */; };
 		B5790A2F25E78F2B006C0962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A2E25E78F2B006C0962 /* AppDelegate.swift */; };
 		B5790A3125E78F2C006C0962 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A3025E78F2C006C0962 /* SceneDelegate.swift */; };
 		B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A3225E78F2C006C0962 /* RatesVC.swift */; };
@@ -30,7 +29,6 @@
 		B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		B56B45A825ED1AA400CD3BAA /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		B56B45AF25F0963F00CD3BAA /* RatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesView.swift; sourceTree = "<group>"; };
-		B56B45B125F09BE900CD3BAA /* RatesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesDataSource.swift; sourceTree = "<group>"; };
 		B5790A2B25E78F2B006C0962 /* Curventer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Curventer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5790A2E25E78F2B006C0962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5790A3025E78F2C006C0962 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				B56B45AF25F0963F00CD3BAA /* RatesView.swift */,
-				B56B45B125F09BE900CD3BAA /* RatesDataSource.swift */,
 				B5790A3225E78F2C006C0962 /* RatesVC.swift */,
 				B51BD36A25EBE25A00DDCC8C /* CurrencyCell.swift */,
 			);
@@ -283,7 +280,6 @@
 				B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */,
 				B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */,
 				B5790A2F25E78F2B006C0962 /* AppDelegate.swift in Sources */,
-				B56B45B225F09BE900CD3BAA /* RatesDataSource.swift in Sources */,
 				B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */,
 				B5FAD35825EBF60800B1BA47 /* Currency.swift in Sources */,
 				B56B45B025F0963F00CD3BAA /* RatesView.swift in Sources */,
