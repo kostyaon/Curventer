@@ -4,4 +4,5 @@ target 'Curventer' do
 
   # Pods for Curventer
   pod 'Alamofire', '~> 5.0'
+  pod 'SnapKit', '~>5.0'
 end
