@@ -4,6 +4,7 @@ import SnapKit
 
 class ConverterView: UIView {
     // MARK: - Properties
+    var rates: [Currency] = []
     
     
     // MARK: - Views
@@ -85,6 +86,14 @@ class ConverterView: UIView {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
+    
+    
+    // MARK: - Helper methods
+    func updateTable(with rate: [Currency]) {
+        rates = rate
+        tableView.reloadData()
+    }
+    
 }
 
 
@@ -92,14 +101,20 @@ class ConverterView: UIView {
 extension ConverterView: UITableViewDataSource, UITableViewDelegate {
     // UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return rates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(withIdentifier: "currencyCell") as! CurrencyCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell", for: indexPath) as! CurrencyCell
+               
+        let currency = rates[indexPath.row]
+        cell.update(with: currency)
+               
+        return cell
     }
     
     // UITableViewDelegate
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
