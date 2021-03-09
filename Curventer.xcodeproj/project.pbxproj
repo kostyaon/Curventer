@@ -19,7 +19,7 @@
 		B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4425EBBE8F006C0962 /* Rate.swift */; };
 		B5DC935425F7614000937CE0 /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC935325F7614000937CE0 /* ConverterView.swift */; };
 		B5DC935625F7615800937CE0 /* ConverterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC935525F7615800937CE0 /* ConverterVC.swift */; };
-		B5DC935825F768C100937CE0 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC935725F768C100937CE0 /* TabBar.swift */; };
+		B5DC935825F768C100937CE0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC935725F768C100937CE0 /* TabBarController.swift */; };
 		B5FAD35825EBF60800B1BA47 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAD35725EBF60800B1BA47 /* Currency.swift */; };
 		B5FAD35A25EC9B5B00B1BA47 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAD35925EC9B5B00B1BA47 /* EndpointType.swift */; };
 		B5FAD35C25EC9C8000B1BA47 /* RateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */; };
@@ -41,7 +41,7 @@
 		B5790A4425EBBE8F006C0962 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
 		B5DC935325F7614000937CE0 /* ConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
 		B5DC935525F7615800937CE0 /* ConverterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterVC.swift; sourceTree = "<group>"; };
-		B5DC935725F768C100937CE0 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		B5DC935725F768C100937CE0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B5FAD35725EBF60800B1BA47 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		B5FAD35925EC9B5B00B1BA47 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		B5FAD35B25EC9C8000B1BA47 /* RateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRouter.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			children = (
 				B5DC935225F7610800937CE0 /* CurventerModule */,
 				B56B45AB25ED626500CD3BAA /* RatesModule */,
-				B5DC935725F768C100937CE0 /* TabBar.swift */,
+				B5DC935725F768C100937CE0 /* TabBarController.swift */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -300,7 +300,7 @@
 				B56B45B025F0963F00CD3BAA /* RatesView.swift in Sources */,
 				B5790A3125E78F2C006C0962 /* SceneDelegate.swift in Sources */,
 				B56B45A925ED1AA400CD3BAA /* NetworkError.swift in Sources */,
-				B5DC935825F768C100937CE0 /* TabBar.swift in Sources */,
+				B5DC935825F768C100937CE0 /* TabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

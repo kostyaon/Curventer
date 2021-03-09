@@ -1,14 +1,14 @@
 import Foundation
 import UIKit
 
-class TabBar: UITabBarController{
+class TabBarController: UITabBarController{
     // MARK: - Navigation controllers
     lazy var nav1: UINavigationController = {
-        return createNavController(for: RatesVC(), title: "Rates", image: UIImage(systemName: "doc.plaintext"))
+        return createNavController(for: RatesVC(), title: "Rates", image: UIImage(systemName: "doc.plaintext"), largeTitle: true)
     }()
     
     lazy var nav2: UINavigationController = {
-        return createNavController(for: ConverterVC(), title: "Converter", image: UIImage(systemName: "function"))
+        return createNavController(for: ConverterVC(), title: "Converter", image: UIImage(systemName: "function"), largeTitle: false)
     }()
     
     
@@ -32,13 +32,13 @@ class TabBar: UITabBarController{
         UITabBar.appearance().tintColor = .systemGreen
     }
     
-    private func createNavController(for rootVC: UIViewController, title: String, image: UIImage?) -> UINavigationController {
+    private func createNavController(for rootVC: UIViewController, title: String, image: UIImage?, largeTitle: Bool) -> UINavigationController {
         let navController = UINavigationController(rootViewController: rootVC)
         
         // Setup navController
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
-        navController.navigationBar.prefersLargeTitles = true
+        navController.navigationBar.prefersLargeTitles = largeTitle
         rootVC.navigationItem.title = title
         
         return navController
