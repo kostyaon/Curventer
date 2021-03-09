@@ -17,6 +17,8 @@ class ConverterVC: UIViewController {
         fetchRates(for: "USD")
     }
     
+    
+    // MARK: - Helper methods
     func convert(from rates: [String: Double], amount: Double) -> [Currency] {
         return rates.map { (key, value) in
             let convertValue = value * amount
@@ -24,7 +26,6 @@ class ConverterVC: UIViewController {
         }
             
     }
-    
     
     func fetchRates(for base: String) {
         RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchLatestRatesOnBase(base)) { result in
