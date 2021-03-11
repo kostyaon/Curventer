@@ -2,26 +2,11 @@ import Foundation
 import UIKit
 
 class TabBarController: UITabBarController{
-    // MARK: - Navigation controllers
-    lazy var nav1: UINavigationController = {
-        return createNavController(for: RatesVC(), title: "Rates", image: UIImage(systemName: "doc.plaintext"), largeTitle: true)
-    }()
-    
-    lazy var nav2: UINavigationController = {
-        return createNavController(for: ConverterVC(), title: "Converter", image: UIImage(systemName: "function"), largeTitle: false)
-    }()
-    
-    
     // MARK: - View lifecycle method
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTabBar()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
         setupVCs()
     }
     
@@ -47,7 +32,11 @@ class TabBarController: UITabBarController{
     
     // MARK: - Helper methods
     func setupVCs() {
-        viewControllers = [nav1, nav2]
+        viewControllers = [
+            createNavController(for: ConverterVC(), title: "Converter", image: UIImage(systemName: "function"), largeTitle: false),
+            createNavController(for: RatesVC(), title: "Rates", image: UIImage(systemName: "doc.plaintext"), largeTitle: true),
+            createNavController(for: ConvertVC(), title: "Convert", image: UIImage(systemName: "bitcoinsign.square.fill"), largeTitle: false)
+        ]
     }
     
     func pushController(for viewController: UIViewController, to navigationController: UINavigationController) {

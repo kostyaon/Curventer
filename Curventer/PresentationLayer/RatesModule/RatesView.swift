@@ -55,7 +55,7 @@ class RatesView: UIView {
 }
 
 
-// MARK: - UITableViewDataSource
+// MARK: - Extensions
 extension RatesView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rates.count
