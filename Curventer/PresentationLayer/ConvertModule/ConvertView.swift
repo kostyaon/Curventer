@@ -22,8 +22,22 @@ class ConvertView: UIView {
         return picker
     }()
     
+    private lazy var symbolPicker: UIPickerView = {
+        let picker = UIPickerView()
+        
+        picker.dataSource = self
+        picker.delegate = self
+       
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.tintColor = .green
+       
+       return picker
+    }()
+    
     lazy var baseAmountInput: UITextField = {
         let textField = UITextField()
+        
+        textField.delegate = self
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
@@ -37,6 +51,8 @@ class ConvertView: UIView {
     
     lazy var symbolAmountInput: UITextField = {
         let textField = UITextField()
+        
+        textField.delegate = self
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
@@ -60,7 +76,7 @@ class ConvertView: UIView {
         textField.inputView = self.basePicker
         
         //TODO: Remove it
-        textField.text = "PLN"
+        textField.placeholder = "PLN"
         
         return textField
     }()
@@ -73,34 +89,12 @@ class ConvertView: UIView {
         textField.font = UIFont.boldSystemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
-        textField.inputView = self.basePicker
+        textField.inputView = self.symbolPicker
         
         //TODO: Remove it
         textField.placeholder = "EUR"
         
         return textField
-    }()
-    
-    lazy var swapButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-        button.setTitle("Swap", for: .normal)
-        button.setTitleColor(.green, for: .normal)
-        button.addTarget(self, action: #selector(swapCurrincies), for: .touchUpInside)
-        button.backgroundColor = .blue
-        
-       return button
-    }()
-    
-    lazy var convertButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-        button.setTitle("Convert", for: .normal)
-        button.setTitleColor(.green, for: .normal)
-        button.addTarget(self, action: #selector(convertCurrency), for: .touchUpInside)
-        button.backgroundColor = .blue
-        
-        return button
     }()
     
     
@@ -148,38 +142,22 @@ class ConvertView: UIView {
             $0.bottom.equalTo(basePickerField)
             $0.width.equalTo(245)
         }
-        
-        // convertButton setup
-        addSubview(convertButton)
-        convertButton.snp.makeConstraints {
-            $0.height.equalTo(55)
-            $0.centerY.equalTo(self.snp.centerY).offset(-6.25)
-            $0.centerX.equalTo(self.snp.centerX).offset(55)
-        }
-        
-        // swapButton setup
-        addSubview(swapButton)
-        swapButton.snp.makeConstraints {
-            $0.height.equalTo(convertButton.snp.height)
-            $0.centerY.equalTo(convertButton.snp.centerY)
-            $0.left.equalTo(self.snp_leftMargin).offset(30)
-        }
     }
     
-    @objc private func swapCurrincies() {
-        
+    private func updateConvertionFields(amount: String, value: Double, field: UITextField) {
+        let convertedValue = (amount as NSString).doubleValue * value
+        field.text = String(format: "%.2f", convertedValue)
     }
     
-    @objc private func convertCurrency() {
+    private func convertRate(for base: String, to symbol: String, amount: String, field: UITextField) {
         //Fetch exchangeValue
-        RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchRateOnBaseSymbol(basePickerField.text ?? "USD", symbolPickerField.text ?? "USD")) { result in
+        RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchRateOnBaseSymbol(base, symbol)) { result in
             switch result {
             case .failure(let error):
                 print("ERROR HANDLER: \(error.localizedDescription)")
             case .success(let rate):
                 let value = rate.rates.first?.value ?? 0
-                let convertedValue = (self.baseAmountInput.text! as NSString).doubleValue * value
-                self.symbolAmountInput.placeholder = "\(convertedValue)"
+                self.updateConvertionFields(amount: amount, value: value, field: field)
             }
         }
     }
@@ -194,6 +172,7 @@ class ConvertView: UIView {
 
 
 // MARK: - Extensions
+// UIPickerDelegate
 extension ConvertView: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -210,6 +189,25 @@ extension ConvertView: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedBase = currencies[row]
-        symbolPickerField.text = selectedBase
+        if pickerView == basePicker {
+            basePickerField.text = selectedBase
+        } else {
+            symbolPickerField.text = selectedBase
+        }
+    }
+}
+
+extension ConvertView: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == baseAmountInput {
+            convertRate(for: basePickerField.text ?? "USD", to: symbolPickerField.text ?? "USD", amount: baseAmountInput.text!, field: symbolAmountInput)
+        } else {
+            convertRate(for: symbolPickerField.text ?? "USD", to: basePickerField.text ?? "USD", amount: symbolAmountInput.text!, field: baseAmountInput)
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
