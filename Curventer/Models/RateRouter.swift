@@ -33,8 +33,6 @@ extension RateRouter: EndpointType {
         case .fetchRatesOnDateOnBase(_, let base):
             return ["base": base]
         case .fetchRateOnBaseSymbol(let base, let symbol):
-            //TODO: Remove
-            print("PARAMETERS: \(["base": base, "symbols": symbol])")
             return ["base": base, "symbols": symbol]
         }
     }
@@ -49,8 +47,6 @@ extension RateRouter: EndpointType {
     var fullURL: URL {
         switch self {
         default:
-            //TODO: Remove 
-            print("URL: \(self.baseURL) + \(self.path)")
             return URL(string: self.baseURL + self.path)!
         }
     }

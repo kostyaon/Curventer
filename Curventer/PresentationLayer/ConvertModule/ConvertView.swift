@@ -10,7 +10,7 @@ class ConvertView: UIView {
     
     
     // MARK: - Views
-    private lazy var currencyPicker: UIPickerView = {
+    private lazy var basePicker: UIPickerView = {
        let picker = UIPickerView()
         
         picker.dataSource = self
@@ -22,61 +22,74 @@ class ConvertView: UIView {
         return picker
     }()
     
-    lazy var amountField: UITextField = {
+    lazy var baseAmountInput: UITextField = {
         let textField = UITextField()
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.systemFont(ofSize: 18)
+        textField.borderStyle = .roundedRect
+        textField.font = UIFont.systemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
-        
-        textField.backgroundColor = .red
+        textField.placeholder = "1.0"
         
         return textField
     }()
     
-    lazy var resultField: UITextField = {
+    lazy var symbolAmountInput: UITextField = {
         let textField = UITextField()
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.systemFont(ofSize: 18)
+        textField.borderStyle = .roundedRect
+        textField.font = UIFont.systemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
-        
-        textField.backgroundColor = .green
+        textField.placeholder = "Result"
         
         return textField
     }()
     
     
-    lazy var baseField: UITextField = {
+    lazy var basePickerField: UITextField = {
         let textField = UITextField()
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.systemFont(ofSize: 21)
+        textField.borderStyle = .roundedRect
+        textField.font = UIFont.boldSystemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
-        textField.inputView = self.currencyPicker
+        textField.inputView = self.basePicker
         
         //TODO: Remove it
-        textField.backgroundColor = .red
-        textField.text = "USD"
+        textField.text = "PLN"
         
         return textField
     }()
     
-    lazy var symbolField: UITextField = {
+    lazy var symbolPickerField: UITextField = {
         let textField = UITextField()
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.font = UIFont.systemFont(ofSize: 21)
+        textField.borderStyle = .roundedRect
+        textField.font = UIFont.boldSystemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
-        textField.inputView = self.currencyPicker
+        textField.inputView = self.basePicker
         
-        textField.backgroundColor = .green
+        //TODO: Remove it
+        textField.placeholder = "EUR"
         
         return textField
+    }()
+    
+    lazy var swapButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.setTitle("Swap", for: .normal)
+        button.setTitleColor(.green, for: .normal)
+        button.addTarget(self, action: #selector(swapCurrincies), for: .touchUpInside)
+        button.backgroundColor = .blue
+        
+       return button
     }()
     
     lazy var convertButton: UIButton = {
@@ -106,59 +119,67 @@ class ConvertView: UIView {
     
     // MARK: - Private methods
     private func setupViews() {
-        // amountField setup
-        addSubview(amountField)
-        amountField.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(50)
-            make.top.equalToSuperview().inset(200)
-            make.height.equalTo(25)
-            make.width.equalTo(200)
-            
+        // basePickerField setup
+        addSubview(basePickerField)
+        basePickerField.snp.makeConstraints {
+            $0.left.equalTo(self.snp_leftMargin)
+            $0.bottom.equalTo(self.snp.centerY).offset(-75)
         }
         
-        // resultField setup
-        addSubview(resultField)
-        resultField.snp.makeConstraints { make in
-            make.top.equalTo(amountField.snp.bottom).offset(30)
-            make.left.right.equalTo(amountField)
+        // symbolPickerField setup
+        addSubview(symbolPickerField)
+        symbolPickerField.snp.makeConstraints {
+            $0.left.equalTo(basePickerField.snp.left)
+            $0.top.equalTo(self.snp.centerY).offset(65)
         }
         
-        // baseField setup
-        addSubview(baseField)
-        baseField.snp.makeConstraints { make in
-            make.left.equalTo(amountField.snp.right).offset(15)
-            make.top.bottom.equalTo(amountField)
-            make.width.equalTo(50)
+        // symbolAmountField setup
+        addSubview(symbolAmountInput)
+        symbolAmountInput.snp.makeConstraints {
+            $0.left.equalTo(symbolPickerField.snp.right).offset(8)
+            $0.top.equalTo(symbolPickerField)
+            $0.width.equalTo(245)
         }
         
-        // symbolField setup
-        addSubview(symbolField)
-        symbolField.snp.makeConstraints { make in
-            make.left.equalTo(resultField.snp.right).offset(15)
-            make.top.bottom.equalTo(resultField)
-            make.width.equalTo(50)
+        // baseAmountField setup
+        addSubview(baseAmountInput)
+        baseAmountInput.snp.makeConstraints {
+            $0.left.equalTo(basePickerField.snp.right).offset(8)
+            $0.bottom.equalTo(basePickerField)
+            $0.width.equalTo(245)
         }
         
         // convertButton setup
         addSubview(convertButton)
-        convertButton.snp.makeConstraints { make in
-            make.height.equalTo(50)
-            make.top.equalTo(resultField.snp.bottom).offset(70)
-            make.left.equalToSuperview().offset(150)
+        convertButton.snp.makeConstraints {
+            $0.height.equalTo(55)
+            $0.centerY.equalTo(self.snp.centerY).offset(-6.25)
+            $0.centerX.equalTo(self.snp.centerX).offset(55)
+        }
+        
+        // swapButton setup
+        addSubview(swapButton)
+        swapButton.snp.makeConstraints {
+            $0.height.equalTo(convertButton.snp.height)
+            $0.centerY.equalTo(convertButton.snp.centerY)
+            $0.left.equalTo(self.snp_leftMargin).offset(30)
         }
     }
     
+    @objc private func swapCurrincies() {
+        
+    }
     
     @objc private func convertCurrency() {
         //Fetch exchangeValue
-        RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchRateOnBaseSymbol(baseField.text ?? "USD", symbolField.text ?? "USD")) { result in
+        RateAPIManager.fetch(type: Rate.self, router: RateRouter.fetchRateOnBaseSymbol(basePickerField.text ?? "USD", symbolPickerField.text ?? "USD")) { result in
             switch result {
             case .failure(let error):
                 print("ERROR HANDLER: \(error.localizedDescription)")
             case .success(let rate):
                 let value = rate.rates.first?.value ?? 0
-                let convertedValue = (self.amountField.text! as NSString).doubleValue * value
-                self.resultField.placeholder = "\(convertedValue)"
+                let convertedValue = (self.baseAmountInput.text! as NSString).doubleValue * value
+                self.symbolAmountInput.placeholder = "\(convertedValue)"
             }
         }
     }
@@ -167,7 +188,7 @@ class ConvertView: UIView {
     // MARK: - Helper methods
     func updateCurrencies(with currencyArray: [String]) {
         currencies = currencyArray
-        currencyPicker.reloadAllComponents()
+        basePicker.reloadAllComponents()
     }
 }
 
@@ -189,6 +210,6 @@ extension ConvertView: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedBase = currencies[row]
-        symbolField.text = selectedBase
+        symbolPickerField.text = selectedBase
     }
 }
