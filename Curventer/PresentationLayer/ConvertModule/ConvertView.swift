@@ -34,12 +34,39 @@ class ConvertView: UIView {
        return picker
     }()
     
+    lazy var itemsButtonToolbar: [UIBarButtonItem] = {
+        var items: [UIBarButtonItem] = []
+        
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePicker))
+        
+        items.append(spacer)
+        items.append(doneButton)
+        
+        return items
+    }()
+    
+    
+    lazy var pickerToolbar: UIToolbar = {
+        let toolbar = UIToolbar()
+        
+        toolbar.barStyle = .default
+        toolbar.isTranslucent = true
+        toolbar.tintColor = .magenta
+        toolbar.sizeToFit()
+        
+        toolbar.setItems(itemsButtonToolbar, animated: true)
+        
+        return toolbar
+    }()
+    
     lazy var baseAmountInput: UITextField = {
         let textField = UITextField()
         
         textField.delegate = self
         
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.clearButtonMode = .whileEditing
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 35)
         textField.textColor = .darkText
@@ -55,6 +82,7 @@ class ConvertView: UIView {
         textField.delegate = self
         
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.clearButtonMode = .whileEditing
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 35)
         textField.textColor = .darkText
@@ -69,11 +97,14 @@ class ConvertView: UIView {
         let textField = UITextField()
         
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.clearButtonMode = .whileEditing
         textField.borderStyle = .roundedRect
         textField.font = UIFont.boldSystemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
+        
         textField.inputView = self.basePicker
+        textField.inputAccessoryView = self.pickerToolbar
         
         //TODO: Remove it
         textField.placeholder = "PLN"
@@ -85,11 +116,14 @@ class ConvertView: UIView {
         let textField = UITextField()
         
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.clearButtonMode = .whileEditing
         textField.borderStyle = .roundedRect
         textField.font = UIFont.boldSystemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
+        
         textField.inputView = self.symbolPicker
+        textField.inputAccessoryView = self.pickerToolbar
         
         //TODO: Remove it
         textField.placeholder = "EUR"
@@ -112,6 +146,12 @@ class ConvertView: UIView {
     
     
     // MARK: - Private methods
+    @objc private func donePicker() {
+        basePickerField.resignFirstResponder()
+        symbolPickerField.resignFirstResponder()
+        convertRate(for: basePickerField.text ?? "USD", to: symbolPickerField.text ?? "USD", amount: baseAmountInput.text!, field: symbolAmountInput)
+    }
+    
     private func setupViews() {
         // basePickerField setup
         addSubview(basePickerField)
@@ -156,8 +196,13 @@ class ConvertView: UIView {
             case .failure(let error):
                 print("ERROR HANDLER: \(error.localizedDescription)")
             case .success(let rate):
-                let value = rate.rates.first?.value ?? 0
-                self.updateConvertionFields(amount: amount, value: value, field: field)
+                let value: Double?
+                if base == "" || symbol == "" {
+                    value = 0
+                } else {
+                    value = rate.rates.first?.value ?? 0
+                }
+                self.updateConvertionFields(amount: amount, value: value!, field: field)
             }
         }
     }

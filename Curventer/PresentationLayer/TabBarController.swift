@@ -33,9 +33,8 @@ class TabBarController: UITabBarController{
     // MARK: - Helper methods
     func setupVCs() {
         viewControllers = [
-            createNavController(for: ConverterVC(), title: "Converter", image: UIImage(systemName: "function"), largeTitle: false),
-            createNavController(for: RatesVC(), title: "Rates", image: UIImage(systemName: "doc.plaintext"), largeTitle: true),
-            createNavController(for: ConvertVC(), title: "Convert", image: UIImage(systemName: "bitcoinsign.square.fill"), largeTitle: false)
+            createNavController(for: ConvertVC(), title: "Convert", image: UIImage(systemName: "bitcoinsign.square.fill"), largeTitle: false),
+            createNavController(for: RatesVC(), title: "Rates", image: UIImage(systemName: "doc.plaintext"), largeTitle: true)
         ]
     }
     
