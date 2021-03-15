@@ -68,6 +68,8 @@ class ConvertView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clearButtonMode = .whileEditing
         textField.borderStyle = .roundedRect
+        textField.keyboardType = .numbersAndPunctuation
+        textField.returnKeyType = .done
         textField.font = UIFont.systemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
@@ -84,6 +86,8 @@ class ConvertView: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.clearButtonMode = .whileEditing
         textField.borderStyle = .roundedRect
+        textField.keyboardType = .numbersAndPunctuation
+        textField.returnKeyType = .done
         textField.font = UIFont.systemFont(ofSize: 35)
         textField.textColor = .darkText
         textField.textAlignment = .center
@@ -195,6 +199,8 @@ class ConvertView: UIView {
             switch result {
             case .failure(let error):
                 print("ERROR HANDLER: \(error.localizedDescription)")
+                self.baseAmountInput.text = "Error"
+                self.symbolAmountInput.text = "Error"
             case .success(let rate):
                 let value: Double?
                 if base == "" || symbol == "" {
@@ -211,6 +217,9 @@ class ConvertView: UIView {
     // MARK: - Helper methods
     func updateCurrencies(with currencyArray: [String]) {
         currencies = currencyArray
+        currencies.sort {
+            $0 < $1
+        }
         basePicker.reloadAllComponents()
     }
 }
