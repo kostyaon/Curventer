@@ -251,6 +251,7 @@ extension ConvertView: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
+// UITextFieldDelegate
 extension ConvertView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == baseAmountInput {

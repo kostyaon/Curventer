@@ -17,6 +17,8 @@
 		B5790A3825E78F33006C0962 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5790A3725E78F33006C0962 /* Assets.xcassets */; };
 		B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4225EBB934006C0962 /* RateAPIManager.swift */; };
 		B5790A4525EBBE8F006C0962 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5790A4425EBBE8F006C0962 /* Rate.swift */; };
+		B59281292600F5E600506ED0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59281282600F5E600506ED0 /* SettingsView.swift */; };
+		B592812B2600F60800506ED0 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B592812A2600F60800506ED0 /* SettingsVC.swift */; };
 		B5DC935425F7614000937CE0 /* ConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC935325F7614000937CE0 /* ConverterView.swift */; };
 		B5DC935625F7615800937CE0 /* ConverterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC935525F7615800937CE0 /* ConverterVC.swift */; };
 		B5DC935825F768C100937CE0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DC935725F768C100937CE0 /* TabBarController.swift */; };
@@ -41,6 +43,8 @@
 		B5790A3C25E78F34006C0962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5790A4225EBB934006C0962 /* RateAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateAPIManager.swift; sourceTree = "<group>"; };
 		B5790A4425EBBE8F006C0962 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		B59281282600F5E600506ED0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B592812A2600F60800506ED0 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		B5DC935325F7614000937CE0 /* ConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterView.swift; sourceTree = "<group>"; };
 		B5DC935525F7615800937CE0 /* ConverterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterVC.swift; sourceTree = "<group>"; };
 		B5DC935725F768C100937CE0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 		B56B45AA25ED624100CD3BAA /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				B59281272600F5C600506ED0 /* SettingsModule */,
 				B5DC935B25F873E800937CE0 /* ConvertModule */,
 				B5DC935225F7610800937CE0 /* CurventerModule */,
 				B56B45AB25ED626500CD3BAA /* RatesModule */,
@@ -168,6 +173,15 @@
 				B5790A3C25E78F34006C0962 /* Info.plist */,
 			);
 			path = Curventer;
+			sourceTree = "<group>";
+		};
+		B59281272600F5C600506ED0 /* SettingsModule */ = {
+			isa = PBXGroup;
+			children = (
+				B59281282600F5E600506ED0 /* SettingsView.swift */,
+				B592812A2600F60800506ED0 /* SettingsVC.swift */,
+			);
+			path = SettingsModule;
 			sourceTree = "<group>";
 		};
 		B5DC935225F7610800937CE0 /* CurventerModule */ = {
@@ -302,10 +316,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5FAD35A25EC9B5B00B1BA47 /* EndpointType.swift in Sources */,
+				B592812B2600F60800506ED0 /* SettingsVC.swift in Sources */,
 				B51BD36B25EBE25A00DDCC8C /* CurrencyCell.swift in Sources */,
 				B5DC935625F7615800937CE0 /* ConverterVC.swift in Sources */,
 				B5FAD35C25EC9C8000B1BA47 /* RateRouter.swift in Sources */,
 				B5DC935F25F8840400937CE0 /* ConvertVC.swift in Sources */,
+				B59281292600F5E600506ED0 /* SettingsView.swift in Sources */,
 				B5DC935425F7614000937CE0 /* ConverterView.swift in Sources */,
 				B5790A4325EBB934006C0962 /* RateAPIManager.swift in Sources */,
 				B5790A3325E78F2C006C0962 /* RatesVC.swift in Sources */,
