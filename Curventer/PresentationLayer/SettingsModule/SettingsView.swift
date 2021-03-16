@@ -5,7 +5,6 @@ import SnapKit
 class SettingsView: UIView {
     // MARK: - Properties
     var currencies: [String] = []
-    var delegate: DataSendingProtocol?
     
     
     // MARK: - Views
