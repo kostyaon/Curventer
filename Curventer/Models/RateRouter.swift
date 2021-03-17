@@ -4,6 +4,7 @@ import Alamofire
 enum RateRouter {
     case fetchLatestRatesOnBase(String)
     case fetchRatesOnDateOnBase(String, String)
+    case fetchRateOnBaseSymbol(String, String)
 }
 
 // MARK: - Extensions
@@ -31,6 +32,8 @@ extension RateRouter: EndpointType {
             return ["base": base]
         case .fetchRatesOnDateOnBase(_, let base):
             return ["base": base]
+        case .fetchRateOnBaseSymbol(let base, let symbol):
+            return ["base": base, "symbols": symbol]
         }
     }
     

@@ -27,17 +27,6 @@ class CurrencyCell: UITableViewCell {
         return label
     }()
     
-    lazy var favButton: UIButton = {
-        let button = UIButton(type: .system)
-        let starImage = UIImage(systemName: "star")
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(starImage, for: .normal)
-        button.tintColor = .systemOrange
-        
-        return button
-    }()
-    
     
     // MARK: - init methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -69,21 +58,13 @@ class CurrencyCell: UITableViewCell {
             make.leading.equalTo(margins.snp.leading)
             make.trailing.equalTo(margins.snp.trailing).offset(8)
         }
-        
-        // favButton setup
-        addSubview(favButton)
-        favButton.snp.makeConstraints { make in
-            make.trailing.equalTo(margins.snp.trailing).offset(-6)
-            make.top.equalTo(margins.snp.top).offset(12)
-            make.bottom.equalTo(margins.snp.bottom).offset(-12.5)
-        }
     }
     
     
     // MARK: - Helper methods
     func update(with currency: Currency) {
         currencyLabel.text = currency.name
-        rateLabel.text = "\(currency.value)"
+        rateLabel.text = String(format: "%.3f", currency.value)
     }
 }
 
