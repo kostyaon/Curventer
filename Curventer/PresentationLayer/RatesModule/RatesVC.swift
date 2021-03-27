@@ -4,6 +4,7 @@ class RatesVC: UIViewController {
     // MARK: - View lifecycle methods
     override func loadView() {
         let ratesView = RatesView()
+        navigationItem.rightBarButtonItem = ratesView.settingsButton
         self.view = ratesView
     }
     
@@ -31,5 +32,14 @@ class RatesVC: UIViewController {
                 print("ERROR HANDLER: \(error.localizedDescription)")
             }
         }
+    }
+    
+    @objc func settingMenu() {
+        let currencies = (self.view as? ConvertView)?.getCurrencies()
+        
+        let vc = SettingsVC()
+        vc.setCurrencies(with: currencies ?? [])
+        
+        self.present(vc, animated: true, completion: nil)
     }
 }

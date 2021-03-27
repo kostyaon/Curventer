@@ -8,15 +8,19 @@ class SettingsVC: UIViewController {
     // MARK: - View lifecycle method's
     override func loadView() {
         let settingsView = SettingsView()
-        self.view = settingsView
+        settingsView.updateCurrencies(with: currencies)
         
+        self.view = settingsView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (self.view as? SettingsView)?.updateCurrencies(with: currencies)
     }
     
+    
     // MARK: - Helper methods
+    public func setCurrencies(with data: [String]) {
+        currencies = data
+    }
 }

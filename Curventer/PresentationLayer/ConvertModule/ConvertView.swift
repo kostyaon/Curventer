@@ -4,7 +4,7 @@ import SnapKit
 
 class ConvertView: UIView {
     // MARK: - Properties
-    var currencies: [String] = []
+    var currencies: [String] = [] 
     var selectedBase: String?
     var selectedSymbol: String?
     
@@ -135,6 +135,12 @@ class ConvertView: UIView {
         return textField
     }()
     
+    lazy var settingsButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(ConvertVC.settingMenu))
+        
+        return button
+    }()
+    
     
     // MARK: - init methods
     override init(frame: CGRect) {
@@ -221,6 +227,10 @@ class ConvertView: UIView {
             $0 < $1
         }
         basePicker.reloadAllComponents()
+    }
+    
+    func getCurrencies() -> [String] {
+        return self.currencies
     }
 }
 

@@ -138,9 +138,7 @@ class SettingsView: UIView {
     // MARK: - Helper methods
     public func updateCurrencies(with currenciesArray: [String]) {
         currencies = currenciesArray
-        currencies.sort {
-            $0 < $1
-        }
+        
         picker.reloadAllComponents()
     }
 }

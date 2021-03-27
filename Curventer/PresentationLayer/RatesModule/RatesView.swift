@@ -21,6 +21,12 @@ class RatesView: UIView {
         return tableView
     }()
     
+    lazy var settingsButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: RatesVC.self, action: #selector(RatesVC.settingMenu))
+        
+        return button
+    }()
+    
     
     // MARK: - init methods
     override init(frame: CGRect) {
@@ -149,7 +155,7 @@ extension RatesView: UITableViewDataSource, UITableViewDelegate {
         favoriteAction.backgroundColor = .systemOrange
         favoriteAction.image = UIImage(systemName: "star")
         
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self](_, _, completion) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completion) in
             guard let weakSelf = self else {
                 return
             }
