@@ -5,6 +5,7 @@ import SnapKit
 class SettingsView: UIView {
     // MARK: - Properties
     var currencies: [String] = []
+    var delegate: SettingsViewControllerDelegate?
     
     
     // MARK: - Views
@@ -107,6 +108,7 @@ class SettingsView: UIView {
     // MARK: - Private methods
     @objc private func performDone() {
         baseField.resignFirstResponder()
+        delegate?.dismissController(with: baseField.text ?? "USD")
     }
     
     private func setupViews() {

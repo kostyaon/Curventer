@@ -15,6 +15,8 @@ class RatesView: UIView {
             $0.name
         }
     }
+    var delegate: RatesViewControllerDelegate?
+    
     
     // MARK: - Views
     lazy var tableView: UITableView = {
@@ -88,10 +90,7 @@ class RatesView: UIView {
     }
     
     @objc func settingMenu() {
-        let vc = SettingsVC()
-        vc.setCurrencies(with: currencies)
-        
-        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
+        delegate?.presentSettingsVC(with: currencies)
     }
 }
 

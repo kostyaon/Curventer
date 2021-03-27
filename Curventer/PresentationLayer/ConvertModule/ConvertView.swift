@@ -7,6 +7,7 @@ class ConvertView: UIView {
     var currencies: [String] = [] 
     var selectedBase: String?
     var selectedSymbol: String?
+    var delegate: ConvertViewControllerDelegate?
     
     
     // MARK: - Views
@@ -230,10 +231,7 @@ class ConvertView: UIView {
     }
     
     @objc func settingMenu() {
-        let vc = SettingsVC()
-        vc.setCurrencies(with: currencies)
-        
-        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
+        delegate?.presentingSettingsVC(with: currencies)
     }
 }
 

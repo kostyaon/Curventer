@@ -1,8 +1,15 @@
 import Foundation
 import UIKit
 
+// MARK: - Protocols
+protocol ConvertViewControllerDelegate {
+    func presentingSettingsVC(with currencies: [String])
+}
+
+
 class ConvertVC: UIViewController {
     // MARK: - Properties
+    
     
     
     // MARK: - View lifecycle methods
@@ -11,6 +18,7 @@ class ConvertVC: UIViewController {
         navigationItem.rightBarButtonItem = convertView.settingsButton
         
         self.view = convertView
+        convertView.delegate = self
     }
     
     override func viewDidLoad() {
@@ -41,5 +49,16 @@ class ConvertVC: UIViewController {
                 print("ERROR HANDLER: \(error.localizedDescription)")
             }
         }
+    }
+}
+
+// MARK: - Extensions
+extension ConvertVC: ConvertViewControllerDelegate {
+    func presentingSettingsVC(with currencies: [String]) {
+        let vc = SettingsVC()
+        vc.setCurrencies(with: currencies)
+        vc.delegate = RatesVC()
+        
+        self.present(vc, animated: true, completion: nil)
     }
 }
