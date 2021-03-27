@@ -6,7 +6,15 @@ class RatesView: UIView {
     // MARK: - Properties
     var rates: [Currency] = []
     var favorites: [Currency] = []
-    
+    var currencies: [String] {
+        var array = rates + favorites
+        array.sort {
+            $0.name < $1.name
+        }
+        return array.map {
+            $0.name
+        }
+    }
     
     // MARK: - Views
     lazy var tableView: UITableView = {
@@ -22,7 +30,7 @@ class RatesView: UIView {
     }()
     
     lazy var settingsButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: RatesVC.self, action: #selector(RatesVC.settingMenu))
+        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(settingMenu))
         
         return button
     }()
@@ -77,6 +85,13 @@ class RatesView: UIView {
             $0.name < $1.name
         }
         tableView.reloadData()
+    }
+    
+    @objc func settingMenu() {
+        let vc = SettingsVC()
+        vc.setCurrencies(with: currencies)
+        
+        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -142,14 +157,14 @@ extension RatesView: UITableViewDataSource, UITableViewDelegate {
         
         // Define actions
         let favoriteAction = UIContextualAction(style: .normal, title: nil) { [weak self] (_, _, completion) in
-            guard let weaakSelf = self else {
+            guard let weakSelf = self else {
                 return
             }
             
-            weaakSelf.updateFavorite(with: weaakSelf.rates[indexPath.row])
+            weakSelf.updateFavorite(with: weakSelf.rates[indexPath.row])
             
-            weaakSelf.removeCurrency(from: &weaakSelf.rates, at: indexPath.row)
-            weaakSelf.tableView.deleteRows(at: [indexPath], with: .top)
+            weakSelf.removeCurrency(from: &weakSelf.rates, at: indexPath.row)
+            weakSelf.tableView.deleteRows(at: [indexPath], with: .top)
             completion(true)
         }
         favoriteAction.backgroundColor = .systemOrange

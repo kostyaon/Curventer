@@ -136,7 +136,7 @@ class ConvertView: UIView {
     }()
     
     lazy var settingsButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(ConvertVC.settingMenu))
+        let button = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(settingMenu))
         
         return button
     }()
@@ -229,8 +229,11 @@ class ConvertView: UIView {
         basePicker.reloadAllComponents()
     }
     
-    func getCurrencies() -> [String] {
-        return self.currencies
+    @objc func settingMenu() {
+        let vc = SettingsVC()
+        vc.setCurrencies(with: currencies)
+        
+        self.window?.rootViewController?.present(vc, animated: true, completion: nil)
     }
 }
 

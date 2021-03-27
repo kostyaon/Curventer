@@ -42,13 +42,4 @@ class ConvertVC: UIViewController {
             }
         }
     }
-    
-    @objc func settingMenu() {
-        let currencies = (self.view as? ConvertView)?.getCurrencies()
-        
-        let vc = SettingsVC()
-        vc.setCurrencies(with: currencies ?? [])
-        
-        self.present(vc, animated: true, completion: nil)
-    }
 }
